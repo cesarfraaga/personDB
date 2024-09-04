@@ -34,24 +34,6 @@ public class PessoaDao extends Dao {
         }
 
     }
-
-    /* ANTES
-    public void incluirPessoa(Pessoa p) throws Exception {
-        open();
-        stmt = connection.prepareStatement("insert into pessoa (nome, email) values(?,?)");
-        //stmt.setInt(1, p.getIdPessoa());
-        stmt.setString(1, p.getNome());
-        stmt.setString(2, p.getEmail());
-        stmt.execute();
-        stmt.close();
-        connection.close();
-
-        ResultSet generatedKeys = stmt.getGeneratedKeys();
-        if (generatedKeys.next()) {
-            p.setIdPessoa(generatedKeys.getInt(1));
-        }
-
-    }*/
     public List<Pessoa> ListarPessoas() {
         try {
             open();

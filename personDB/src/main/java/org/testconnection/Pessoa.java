@@ -9,12 +9,12 @@ public class Pessoa {
     }
 
     public Pessoa (String nome, String email) {
-        super(); // Ainda precisa entender o porque;
+        super();
         this.nome = nome;
         this.email = email;
     }
     public Pessoa (int idPessoa, String nome, String email) {
-        super(); // Ainda precisa entender o porque;
+        super();
         this.nome = nome;
         this.email = email;
     }
