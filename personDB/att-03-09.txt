@@ -1,0 +1,57 @@
+Estava com dificuldades para criar uma nova Pessoa na tabela, pois sempre que tentava, aparecia que eu não estava respeitando a restrição de pk_idpessoa, no caso, primary key;
+
+Consegui atualizar:
+
+public void incluirPessoa(Pessoa p) throws Exception {
+        open();
+        stmt = connection.prepareStatement("insert into pessoa (nome, email) values(?,?)");
+        //stmt.setInt(1, p.getIdPessoa());
+        stmt.setString(1, p.getNome());
+        stmt.setString(2, p.getEmail());
+        stmt.execute();
+        stmt.close();
+        connection.close();
+
+        ResultSet generatedKeys = stmt.getGeneratedKeys();
+        if (generatedKeys.next()) {
+            p.setIdPessoa(generatedKeys.getInt(1));
+        }
+
+Para:
+
+	    public void incluirPessoa(Pessoa p) throws Exception {
+        open();
+        try {
+            stmt = connection.prepareStatement(
+                    "insert into pessoa (nome, email) values(?,?)",
+                    Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, p.getNome());
+            stmt.setString(2, p.getEmail());
+            stmt.execute(); // Update?
+            ResultSet generatedKeys = stmt.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                p.setIdPessoa(generatedKeys.getInt(1));
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao inserir pessoa: " + e.getMessage());
+            throw e;
+
+        } finally {
+            if (stmt != null && !stmt.isClosed()) {
+                stmt.close();
+            }
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+
+    }
+
+O código funcionou normalmente, também recriei minha tabela com:
+
+
+CREATE TABLE pessoa (
+    idPessoa SERIAL PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL
+);
