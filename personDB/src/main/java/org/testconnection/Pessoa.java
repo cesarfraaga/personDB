@@ -1,7 +1,7 @@
 package org.testconnection;
 
 public class Pessoa {
-    private int idPessoa;
+    private int idpessoa;
     private String nome;
     private String email;
 
@@ -13,8 +13,9 @@ public class Pessoa {
         this.nome = nome;
         this.email = email;
     }
-    public Pessoa (int idPessoa, String nome, String email) {
+    public Pessoa (int idpessoa, String nome, String email) {
         super();
+        this.idpessoa = idpessoa;
         this.nome = nome;
         this.email = email;
     }
@@ -26,12 +27,12 @@ public class Pessoa {
         return email;
     }
 
-    public int getIdPessoa() {
-        return idPessoa;
+    public int getIdpessoa() {
+        return idpessoa;
     }
 
-    public void setIdPessoa(int idPessoa) {
-        this.idPessoa = idPessoa;
+    public void setIdpessoa(int idpessoa) {
+        this.idpessoa = idpessoa;
     }
 
     public void setNome(String nome) {
@@ -45,7 +46,7 @@ public class Pessoa {
     @Override
     public String toString() {
         return "Dados da pessoa: \n" +
-                "id: " + idPessoa +
+                "id: " + idpessoa +
                 "\nnome: " + nome +
                 "\nemail: " + email;
     }
