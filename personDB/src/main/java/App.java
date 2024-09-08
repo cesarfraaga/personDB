@@ -17,35 +17,33 @@ public class App {
             if (listaPessoas.isEmpty()) {
                 System.out.println("Não tem pessoas cadastradas");
             } else {
+                System.out.println("Pessoas:");
                 for (Pessoa p : listaPessoas) {
                     System.out.println(p);
                 }
             }
 
             //Alterar uma pessoa;
-            try {
+            /*try {
                 Pessoa pessoaAtualizada = new Pessoa(9, "Kalebinho", "lebinho@gmail.com");
                 pd.alterarPessoa(pessoaAtualizada);
             } catch (SQLException e) {
                 System.out.println("Error: " + e.getMessage());
-            }
+            }*/
 
             // Consultar individualmente
-            Pessoa pessoa = pd.consultarPessoaIndividual(9);
-            System.out.println("\nPessoa: " + pessoa);
+            /*Pessoa pessoa = pd.consultarPessoaIndividual(9);
+            System.out.println("\n" + pessoa);*/
 
             // Excluir pessoa
-            try {
+            /*try {
                 Pessoa pessoaParaExcluir = new Pessoa();
                 pessoaParaExcluir.setIdpessoa(8);
                 pd.excluirPessoa(pessoaParaExcluir);
 
             } catch (SQLException e) {
                 System.out.println("Error: " + e.getMessage());
-            }
-
-            Pessoa pessoa1 = pd.consultarPessoaIndividual(9);
-            System.out.println("\nPessoa: " + pessoa1);
+            }*/
 
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());

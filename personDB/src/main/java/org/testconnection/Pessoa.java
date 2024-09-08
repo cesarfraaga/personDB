@@ -48,8 +48,9 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Dados da pessoa: \n" +
-                "id: " + idpessoa +
+        return  "============================" +
+                "\nDados da pessoa:" +
+                "\nid: " + idpessoa +
                 "\nnome: " + nome +
                 "\nemail: " + email;
     }
