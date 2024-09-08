@@ -7,6 +7,9 @@ public class Pessoa {
 
     public Pessoa () {
     }
+    public Pessoa (int idpessoa) {
+        this.idpessoa = idpessoa;
+    }
 
     public Pessoa (String nome, String email) {
         super();

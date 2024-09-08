@@ -30,10 +30,22 @@ public class App {
                 System.out.println("Error: " + e.getMessage());
             }
 
-
             // Consultar individualmente
-            //Pessoa pessoa = pd.consultarPessoaIndividual(8);
-            //System.out.println("Pessoa: " + pessoa);
+            Pessoa pessoa = pd.consultarPessoaIndividual(9);
+            System.out.println("\nPessoa: " + pessoa);
+
+            // Excluir pessoa
+            try {
+                Pessoa pessoaParaExcluir = new Pessoa();
+                pessoaParaExcluir.setIdpessoa(8);
+                pd.excluirPessoa(pessoaParaExcluir);
+
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+
+            Pessoa pessoa1 = pd.consultarPessoaIndividual(9);
+            System.out.println("\nPessoa: " + pessoa1);
 
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());

@@ -86,11 +86,28 @@ public class PessoaDao extends Dao {
 
     public void excluirPessoa(Pessoa p) throws Exception {
         open();
-        stmt = connection.prepareStatement("delete from pessoa where idPessoa = ?");
-        stmt.setInt(1, p.getIdpessoa());
-        stmt.execute();
-        stmt.close();
-        connection.close();
+
+        try {
+            stmt = connection.prepareStatement("delete from pessoa where idpessoa = ?");
+            stmt.setInt(1, p.getIdpessoa());
+            int rowsDeleted = stmt.executeUpdate();
+
+            if (rowsDeleted > 0) {
+                System.out.println("Pessoa excluída com sucesso!");
+            } else {
+                System.out.println("Nenhuma pessoa encontrada com esse ID");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            if (stmt != null && !stmt.isClosed()) {
+            stmt.close();
+            }
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
     }
 
     public Pessoa consultarPessoaIndividual(int cod) throws Exception {
